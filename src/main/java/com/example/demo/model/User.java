@@ -21,6 +21,8 @@ public class User implements UserDetails {
     private Long id;
     @Column(name = "username", unique = true)
     private String name;
+    @Column(name = "age")
+    private int age;
     @Column(name = "password")
     private String password;
 
@@ -38,8 +40,9 @@ public class User implements UserDetails {
     }
 
 
-    public User(String name, String password, Set<Role> roles) {
+    public User(String name, int age, String password, Set<Role> roles) {
         this.name = name;
+        this.age = age;
         this.password = password;
         this.roles = roles;
     }
@@ -58,6 +61,14 @@ public class User implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public void setRoles(Set<Role> roles) {
@@ -113,12 +124,12 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(roles, user.roles);
+        return Objects.equals(name, user.name) && Objects.equals(age, user.age) && Objects.equals(password, user.password) && Objects.equals(roles, user.roles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, password, roles);
+        return Objects.hash(name, age, password, roles);
     }
 
     @Override
@@ -126,6 +137,7 @@ public class User implements UserDetails {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", age='" + age + '\'' +
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
                 '}';

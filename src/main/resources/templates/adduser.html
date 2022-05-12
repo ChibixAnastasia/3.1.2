@@ -9,12 +9,23 @@
     <label for="username">Username</label>
     <input type="text" th:field="*{name}" id="username" placeholder="Username">
     </br>
+    </br>
+    </br>
+    <label for="username">Age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="Age">
+    </br>
+    </br>
+    </br>
     <label for="password">Password</label>
     <input type="text" th:field="*{password}" id="password" placeholder="Password">
+    </br>
+    </br>
     </br>
     <div th:each="role : ${roles}">
         <input type="checkbox" name="nameRoles" th:value="${role.role}" th:text="${role.role}" th:checked="${role.role} == USER"/>
     </div>
+    </br>
+    </br>
     </br>
     <input type="submit" value="Create User">
 </form>

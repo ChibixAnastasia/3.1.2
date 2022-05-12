@@ -7,12 +7,19 @@
     <label for="id">ID</label>
     <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
     </br>
+    </br>
+    </br>
     <label for="username">Username</label>
     <input type="text" th:field="*{name}" id="username" placeholder="Username">
     </br>
-    <label for="password">Password</label>
-    <input type="text" th:field="*{password}" id="password" placeholder="Password">
     </br>
+    </br>
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="Age">
+    </br>
+    </br>
+    </br>
+
 
     <div th:each="role : ${roles}">
         <input type="checkbox" name="nameRoles" th:value="${role.role}" th:text="${role.role}" th:checked="${role.role} == USER"/>

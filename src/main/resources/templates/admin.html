@@ -14,14 +14,14 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Password</th>
+                <th>Age</th>
                 <th>Role</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${userAll}">
                 <td th:text="${user.username}"></td>
-                <td th:text="${user.password}"></td>
+                <td th:text="${user.age}"></td>
                 <td th:text="${user.roles}"></td>
                 <td><a th:href="@{edit/{id}(id=${user.getId()})}">Edit</a></td>
                 <td><a th:href="@{delete/{id}(id=${user.getId()})}">Delete</a></td>
@@ -29,10 +29,8 @@
             </tbody>
         </table>
     </div>
-    <p><a href="/adduser">Create user</a></p>
+    <p><a  href="/adduser">CREATE USER</a></p>
 </div>
 </body>
-<form th:method="GET" action="/logout">
-    <input type="submit" value="Exit">
 </form>
 </html>

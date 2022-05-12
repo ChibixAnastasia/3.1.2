@@ -20,21 +20,21 @@ import java.util.Set;
 
 
 @SpringBootApplication
-public class SpringBootCrudAppApplication extends SpringBootServletInitializer implements CommandLineRunner {
+public class SpringBootSecurityDemoApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
     private final RoleService roleService;
     private final UserService userService;
 
     @Autowired
-    public SpringBootCrudAppApplication(RoleService roleService, UserService userService) {
+    public SpringBootSecurityDemoApplication(RoleService roleService, UserService userService) {
         this.roleService = roleService;
         this.userService = userService;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootCrudAppApplication.class, args);
+        SpringApplication.run(SpringBootSecurityDemoApplication.class, args);
     }
-//    Проверка!
+
 
 
     @Override
@@ -49,9 +49,9 @@ public class SpringBootCrudAppApplication extends SpringBootServletInitializer i
         Set<Role> roleSetUser = new HashSet<>();
         roleSetUser.add(roleService.getRoleByRoleName("USER"));
 
-        User admin = new User("admin","admin",roleSet);
+        User admin = new User("admin", 22,"admin",roleSet);
 
-        User user = new User("user","user",roleSetUser);
+        User user = new User("user", 33,"user",roleSetUser);
 
 
         userService.saveUser(admin);
@@ -70,6 +70,6 @@ public class SpringBootCrudAppApplication extends SpringBootServletInitializer i
 
     @Override
     public SpringApplicationBuilder configure (SpringApplicationBuilder applicationBuilder){
-        return applicationBuilder.sources(SpringBootCrudAppApplication.class);
+        return applicationBuilder.sources(SpringBootSecurityDemoApplication.class);
     }
 }
